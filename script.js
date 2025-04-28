@@ -1,39 +1,30 @@
-var NUM_PARTICLES = ( ( ROWS = 100 ) * ( COLS = 300 ) ),
-    THICKNESS = Math.pow( 50, 3 ),
-    SPACING = 6,
-    MARGIN = 100,
-    COLOR = 220,
-    DRAG = 0.95,
-    EASE = 0.25,
-    
-    /*
-    
-    used for sine approximation, but Math.sin in Chrome is still fast enough :)http://jsperf.com/math-sin-vs-sine-approximation
-
-    B = 4 / Math.PI,
-    C = -4 / Math.pow( Math.PI, 2 ),
-    P = 0.225,
-
-    */
-
-    container,
-    particle,
-    canvas,
-    mouse,
-    stats,
-    list,
-    ctx,
-    tog,
-    man,
-    dx, dy,
-    mx, my,
-    d, t, f,
-    a, b,
-    i, n,
-    w, h,
-    p, s,
-    r, c
-    ;
+// Particle simulation
+var NUM_PARTICLES = ( ( ROWS = Math.floor(window.innerHeight / 10) ) * ( COLS = Math.floor(window.innerWidth / 10) ) ),
+  THICKNESS = Math.pow( Math.min(window.innerWidth, window.innerHeight) / 10, 2 ),
+  SPACING = 6,
+  MARGIN = 100,
+  COLOR = 220,
+  DRAG = 0.95,
+  EASE = 0.25,
+  
+  container,
+  particle,
+  canvas,
+  mouse,
+  stats,
+  list,
+  ctx,
+  tog,
+  man,
+  dx, dy,
+  mx, my,
+  d, t, f,
+  a, b,
+  i, n,
+  w, h,
+  p, s,
+  r, c
+  ;
 
 particle = {
   vx: 0,
@@ -135,3 +126,21 @@ function step() {
 
 init();
 step();
+
+// Browser behaviour
+function adjustFontSize() {
+  const title = document.getElementById('title');
+  const subtitle1 = document.getElementById('subtitle1');
+  const subtitle2 = document.getElementById('subtitle2');
+
+  const screenWidth = window.innerWidth;
+
+  // Adjust font sizes based on screen width
+  title.style.fontSize = screenWidth > 768 ? '100px' : screenWidth > 480 ? '70px' : '50px';
+  subtitle1.style.fontSize = screenWidth > 768 ? '20px' : screenWidth > 480 ? '16px' : '14px';
+  subtitle2.style.fontSize = screenWidth > 768 ? '20px' : screenWidth > 480 ? '16px' : '14px';
+}
+
+// Call the function on load and resize
+window.addEventListener('load', adjustFontSize);
+window.addEventListener('resize', adjustFontSize);
