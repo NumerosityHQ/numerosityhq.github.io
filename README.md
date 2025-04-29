@@ -1,3 +1,3 @@
 # LandingPage
 Numerosity Landing Page
-> numerosity.pages.dev -> under deployment
+> Initially hosted with GitHub pages but now migrated to Cloudflare pages.
