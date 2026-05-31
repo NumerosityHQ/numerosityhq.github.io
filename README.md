@@ -326,6 +326,8 @@ server.port=${PORT:8080}
 
 ## Firebase Behavior
 
+This integration has been implemented and tested briefly. To ensure reliability, I would suggest to start with this implementation and build upon it.
+
 The backend supports flexible startup behavior:
 
 * initializes Firebase when credentials exist
